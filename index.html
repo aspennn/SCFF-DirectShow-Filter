@@ -1,0 +1,368 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>SCFF DirectShow Filter by Alalf</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">SCFF DirectShow Filter</h1>
+        <p class="header">&quot;ScreenCapture for FFmpeg&quot; DirectShow Filter</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/Alalf/SCFF-DirectShow-Filter/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/Alalf/SCFF-DirectShow-Filter/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/Alalf/SCFF-DirectShow-Filter">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/Alalf">Alalf</a></p>
+
+
+      </header>
+      <section>
+        <h1>SCFF DirectShow Filter</h1>
+
+<ul>
+<li>SCFF directShow FilterはWindows用スクリーンキャプチャプログラム(DirectShowフィルタ)です。</li>
+<li>ffmpegやWindows Media Encoderの映像入力として使われることを想定しています。</li>
+<li>リンク:
+
+<ul>
+<li>Web: <a href="http://alalf.github.com/SCFF-DirectShow-Filter/">http://alalf.github.com/SCFF-DirectShow-Filter/</a>
+</li>
+<li>GitHub: <a href="https://github.com/Alalf/SCFF-DirectShow-Filter">https://github.com/Alalf/SCFF-DirectShow-Filter</a>
+</li>
+<li>Nightly-Build:  <a href="https://github.com/Alalf/SCFF-DirectShow-Filter/downloads">https://github.com/Alalf/SCFF-DirectShow-Filter/downloads</a>
+</li>
+</ul>
+</li>
+</ul><h2>必要動作環境</h2>
+
+<ul>
+<li>Windows XP SP3</li>
+<li>画面の色数: 32bit True Color</li>
+<li>(調査中)</li>
+</ul><h2>最適動作環境</h2>
+
+<ul>
+<li>Windows 7</li>
+<li>CPU: Intel Sandy Bridge/Ivy Bridge
+
+<ul>
+<li>Lucid Virtu (MVP) I-Mode</li>
+<li>GPUに全く負荷を与えずにスクリーンキャプチャができます</li>
+</ul>
+</li>
+</ul><h2>インストール方法</h2>
+
+<ol>
+<li>
+<p>以下のランタイムをインストールしてください:</p>
+
+<ul>
+<li>共通: <a href="http://www.microsoft.com/downloads/ja-jp/details.aspx?FamilyID=e5ad0459-cbcc-4b4f-97b6-fb17111cf544">Microsoft .NET Framework 4 Client Profile</a>
+</li>
+<li>32bit OS: <a href="http://www.microsoft.com/downloads/ja-jp/details.aspx?familyid=c32f406a-f8fc-4164-b6eb-5328b8578f03">Microsoft Visual C++ 2010 SP1 再頒布可能パッケージ (x86)</a>
+</li>
+<li>64bit OS: <a href="http://www.microsoft.com/downloads/ja-jp/details.aspx?FamilyID=C68CCBB6-75EF-4C9D-A326-879EAB4FCDF8">Microsoft Visual C++ 2010 SP1 再頒布可能パッケージ (x64)</a>
+</li>
+</ul>
+</li>
+<li>
+<p>install-x86/amd64.batを実行してください</p>
+
+<ul>
+<li>
+<strong><em>重要！</em></strong>
+インストール後にscff-dsf-x86/amd64.axを移動させた場合は再度install-x86/amd64.batを実行してください。</li>
+</ul>
+</li>
+</ol><h2>使用方法</h2>
+
+<ol>
+<li><p>キャプチャソフトで「SCFF DirectShow Filter」を選択します。</p></li>
+<li><p><strong><em>重要！</em></strong>
+SCFF DirectShow Filterは取り込みサイズとフレームレートは
+出力サイズに自動的に合わせられます。
+各種エンコーダで、まずは出力サイズ、フレームレートを設定してください。</p></li>
+<li><p>プレビュー画面を確認し、ロゴが中央に表示されることを確認してください。</p></li>
+<li><p>scff-app.exeを実行してください。</p></li>
+<li><p>左上のプロセスメニューから目的のプロセスを選択し、
+取り込み設定後、Applyボタンを押してください。
+(Applyボタン横のAutoチェックボックスを押すと、
+一部設定が変更後自動でApplyされます)</p></li>
+<li><p>後はいろいろ触って覚えてください。</p></li>
+</ol><h2>バージョンアップ方法</h2>
+
+<ol>
+<li><p>エンコーダおよびGUIクライアント(scff-app.exe)が実行されていないことを確認して下さい。</p></li>
+<li><p>確認後、ファイルを上書きしてください。</p></li>
+</ol><h2>アンインストール方法</h2>
+
+<ol>
+<li><p>エンコーダおよびGUIクライアント(scff-app.exe)が実行されていないことを確認して下さい。</p></li>
+<li><p>uninstall-x86.bat/uninstall-amd64.batを実行してください。</p></li>
+<li>
+<p>フォルダ・ファイルを削除してください。</p>
+
+<ul>
+<li>レジストリは使用していませんので、これだけで完全にアンインストールが可能です。</li>
+</ul>
+</li>
+</ol><h2>注意</h2>
+
+<ul>
+<li><p><strong><em>重要！</em></strong>
+取り込み時に問題が発生すると、強制的にロゴが表示されます。
+たいていの場合はGUIクライアントで設定を変えてApplyしなおすと直ります。</p></li>
+<li><p>現在判明している問題として、大きな取り込み領域(1920x1050)を
+32x32程度まで小さく縮小しようとすると取り込みに失敗します。</p></li>
+<li><p>何度Applyしても直らない場合は、プロセスメニューをRefreshして
+エンコーダが起動しているかどうか確認してください。</p></li>
+<li>
+<p>それでも直らない場合はSCFF DirectShow Filterに対応していない環境の可能性があります。</p>
+
+<ul>
+<li>以下のWebページの"Issue"に環境の詳細を書き込んでいただければ助かります。</li>
+<li><a href="https://github.com/Alalf/SCFF-DirectShow-Filter">https://github.com/Alalf/SCFF-DirectShow-Filter</a></li>
+</ul>
+</li>
+</ul><h2>開発者向け: ビルド+利用方法</h2>
+
+<ol>
+<li>
+<p><a href="http://ffmpeg.zeranoe.com/builds/">Zeranoe FFmpeg builds</a> からSharedビルド及びDevビルドを取得する</p>
+
+<ul>
+<li><a href="http://ffmpeg.zeranoe.com/builds/win32/shared/ffmpeg-latest-win32-shared.7z">32bit Builds (Shared)</a></li>
+<li><a href="http://ffmpeg.zeranoe.com/builds/win32/dev/ffmpeg-latest-win32-dev.7z">32bit Builds (Dev)</a></li>
+<li><a href="http://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-latest-win64-shared.7z">64bit Builds (Shared)</a></li>
+<li><a href="http://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-latest-win64-dev.7z">64bit Builds (Dev)</a></li>
+<li>ext/ffmpeg/amd64に64bit版を、ext/ffmpeg/x86に32bit版を展開する</li>
+<li>SharedもDevも同じディレクトリに展開すること（数個のファイルが上書きされるが問題ない）</li>
+<li>ext/ffmpeg/amd64/README.txt, ext/ffmpeg/x86/README.txtが存在するように確認すること</li>
+</ul>
+</li>
+<li>
+<p><strong><em>重要！</em></strong> ext/ffmpeg/amd64/include/libavutil/pixdesc.hおよび</p>
+
+<ul>
+<li>
+<p>ext/ffmpeg/x86/include/libavutil/pixdesc.hの以下の部分:</p>
+
+<pre><code>extern const AVPixFmtDescriptor av_pix_fmt_descriptors[];
+</code></pre>
+
+<p>を</p>
+
+<pre><code>extern __declspec(dllimport) const AVPixFmtDescriptor av_pix_fmt_descriptors[];
+</code></pre>
+
+<p>のように書き換えてください。一応tools/pixdesc.patchも添付してあります。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>scff-dsf.slnソリューションを開き、全てのビルドが通ることを確認</p>
+
+<ul>
+<li>Microsoft Visual C++ 2010 Express Edition + Windows SDK 7.1で確認済み</li>
+<li>必要ならばいくつかのプロジェクト設定を書き換えること</li>
+</ul>
+</li>
+<li><p>tools/copy-binaries.batを実行してdistディレクトリにdllなどをコピー</p></li>
+<li><p>tools/install-debug.batかtools/install-release.batを実行</p></li>
+<li><p>各種エンコーダを起動しフィルタが認識されているかチェック</p></li>
+<li>
+<p>scff-app.slnソリューションを開き、全てのビルドが通ることを確認</p>
+
+<ul>
+<li>Microsoft Visual C# 2010 Express Editionで確認済み</li>
+</ul>
+</li>
+<li><p>dist/Debugかdist/Releaseにあるヘルパーアプリケーションを起動し取り込み設定を行う</p></li>
+<li>
+<p>（scff-dsfのデバッグバージョンを利用する場合:）</p>
+
+<ul>
+<li>プロジェクト設定からローカルWindowsデバッガーを選ぶ</li>
+<li>コマンドにWME/KTE/FMEなどを選択すればデバッグ文字列などを見ることが出来る。</li>
+</ul>
+</li>
+</ol><h2>開発者向け: 「開発に参加したい！」</h2>
+
+<ul>
+<li>
+<p>現在、SCFF DirectShow FilterはGitHub上で開発が進められています。</p>
+
+<ul>
+<li><a href="https://github.com/Alalf/SCFF-DirectShow-Filter">https://github.com/Alalf/SCFF-DirectShow-Filter</a></li>
+</ul>
+</li>
+<li>
+<p>パッチを作成したい場合やコードを追加したい場合、まずGoogle C++スタイルガイドを一読してください。</p>
+
+<ul>
+<li><a href="http://www.textdrop.net/google-styleguide-ja/cppguide.xml">Google C++スタイルガイド 日本語訳</a></li>
+<li>このガイドは単純に決め事ではなく、バグを減らすために役に立つテクニックもいくらか含まれているようです。</li>
+</ul>
+</li>
+<li>
+<p>scff-dsfにはdoxygenコメントをつけてあります</p>
+
+<ul>
+<li><a href="http://www.stack.nl/%7Edimitri/doxygen/index.html">Doxygen</a></li>
+<li>プログラムの全体的な構造を把握したい場合はぜひ利用してみてください。</li>
+</ul>
+</li>
+</ul><h2>各種エンコーダー対応情報</h2>
+
+<h3>ffmpeg</h3>
+
+<ul>
+<li>サンプル設定がtools/ffmpeg_test.batにあります。</li>
+</ul><h3>xSplit</h3>
+
+<ul>
+<li>xSplitと併用する場合、ffmpegの一部ライブラリが干渉することがあります。
+
+<ul>
+<li>SplitMediaLabs\XSplit\avutil-51.dllをSCFF付属のavutil-*.dllと置き換えるとよい、という報告がありました。</li>
+</ul>
+</li>
+</ul><h3>Windows Media Encoder</h3>
+
+<ul>
+<li>YUV420P(I420)に加えて各種ピクセルフォーマット出力が利用可能です。
+
+<ul>
+<li>YUV420P: IYUV/YV12</li>
+<li>RGB32</li>
+<li>[暫定対応] YUV422: UYVY/YUY2 
+
+<ul>
+<li>レイアウト機能、Keep Aspect Ratioなどの設定が使えません</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>WMEのノンインターレース化処理の利用は非推奨です。
+
+<ul>
+<li>アマレコやpecatvのデインタレース機能を利用することをおすすめします。</li>
+</ul>
+</li>
+</ul><h3>KoToEncoder(KTE)</h3>
+
+<ul>
+<li>
+<p>KTEでYUV420P出力を利用する場合、scff-dsf/base/constants.hの以下の部分：</p>
+
+<pre><code>// #define FOR_KOTOENCODER
+</code></pre>
+
+<p>を</p>
+
+<pre><code>#define FOR_KOTOENCODER
+</code></pre>
+
+<p>のように書き換えてください。</p>
+</li>
+<li>
+<p>KTEはRGB32出力をサポートしたフィルタを利用する場合、フィルタの出力をRGB32に固定するようです。</p>
+
+<ul>
+<li>書き換え量は増えますが、YUV422も利用可能です。</li>
+<li>詳しくはソリューション内検索で"FOR_KOTOENCODER"で検索してみてください。</li>
+</ul>
+</li>
+<li>
+<p>KoToEncoderのプレビュー機能はI420出力利用時にうまく動かないようです。</p>
+
+<ul>
+<li>出力サイズを設定したあとKTEを再起動すればプレビューが表示されるようになります。</li>
+</ul>
+</li>
+</ul><h2>関連するソフトウェア、ソースコードについて</h2>
+
+<ul>
+<li>DirectShow base classes - efines class hierarchy for streams architecture.
+
+<ul>
+<li>Copyright (c) 1992-2001 Microsoft Corporation.  All rights reserved.</li>
+</ul>
+</li>
+<li>
+<p>ISO C9x  compliant inttypes.h for Microsoft Visual Studio</p>
+
+<ul>
+<li>Copyright (c) 2006 Alexander Chemeris</li>
+</ul>
+</li>
+<li>
+<p>ffmpegプロジェクト(<a href="http://ffmpeg.org">http://ffmpeg.org</a>)</p>
+
+<ul>
+<li>利用しているLGPLライブラリ:
+
+<ul>
+<li>libavutil:
+a library containing functions for simplifying programming, 
+including random number generators, data structures, mathematics routines,
+core multimedia utilities, and much more.</li>
+<li>libavcodec:
+a library containing decoders and encoders for audio/video codecs.</li>
+<li>libswscale:
+a library performing highly optimized image scaling and
+color space/pixel format conversion operations.</li>
+<li>libavfilter: a library containing media filters.</li>
+<li>libavformat: a library containing demuxers and muxers
+for multimedia container formats.</li>
+<li>libswresample: a library performing highly optimized audio resampling, 
+rematrixing and sample format conversion operations.</li>
+</ul>
+</li>
+<li>利用しているLGPLライセンスのソースコード
+
+<ul>
+<li>libavutil/colorspace.h</li>
+<li>libavfilter/drawutils.c</li>
+<li>libavfilter/drawutils.h</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h2>注意</h2>
+
+<ul>
+<li>SCFF DirectShow Filterは"フリーソフトウェア"です。
+
+<ul>
+<li>作者は本ソフトウェアに関する一切の義務（サポート、恒久的アップデート）を持ちません。</li>
+<li>また、本ソフトウェアの使用により生じた直接的、間接的損害に一切の責任を持ちません。</li>
+<li>本ソフトウェアの利用についてはLICENSE(LGPLv.3の詳細)も参照してください。</li>
+</ul>
+</li>
+</ul><hr><ul>
+<li><a href="https://github.com/Alalf/SCFF-DirectShow-Filter">https://github.com/Alalf/SCFF-DirectShow-Filter</a></li>
+<li>Copyright (C) 2012 Alalf</li>
+</ul>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+		
+  </body>
+</html>
