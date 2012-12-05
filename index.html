@@ -46,10 +46,26 @@
 </li>
 </ul>
 </li>
+</ul><h2>現在バージョン0.1.5を利用されている方へ</h2>
+
+<ul>
+<li>バージョン0.1.6-(2012/12版)からフィルタのファイル名が変わりました。</li>
+<li>フォルダ・ファイルを全て削除した上で再インストールをお願いします。
+
+<ul>
+<li>できれば旧バージョンのuninstall-*.batを実行したあとで削除してください。</li>
+</ul>
+</li>
+<li>開発環境をVisual Studio 2012に移行したので、XPでの動作が不安定になる可能性があります。</li>
 </ul><h2>必要動作環境</h2>
 
 <ul>
-<li>Windows XP SP3</li>
+<li>Windows XP SP3(注)/Windows 7
+
+<ul>
+<li>(注)Windows XP SP3では不安定になる可能性があります</li>
+</ul>
+</li>
 <li>画面の色数: 32bit True Color</li>
 <li>(調査中)</li>
 </ul><h2>最適動作環境</h2>
@@ -72,19 +88,19 @@
 <ul>
 <li>共通: <a href="http://www.microsoft.com/downloads/ja-jp/details.aspx?FamilyID=e5ad0459-cbcc-4b4f-97b6-fb17111cf544">Microsoft .NET Framework 4 Client Profile</a>
 </li>
-<li>32bit OS: <a href="http://www.microsoft.com/downloads/ja-jp/details.aspx?familyid=c32f406a-f8fc-4164-b6eb-5328b8578f03">Microsoft Visual C++ 2010 SP1 再頒布可能パッケージ (x86)</a>
+<li>32bit OS: <a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=30679">Visual Studio 2012 Update 1 の Visual C++ 再頒布可能パッケージ (VSU1\vcredist_x86.exe)</a>
 </li>
-<li>64bit OS: <a href="http://www.microsoft.com/downloads/ja-jp/details.aspx?FamilyID=C68CCBB6-75EF-4C9D-A326-879EAB4FCDF8">Microsoft Visual C++ 2010 SP1 再頒布可能パッケージ (x64)</a>
+<li>64bit OS: <a href="http://www.microsoft.com/ja-jp/download/details.aspx?id=30679">Visual Studio 2012 Update 1 の Visual C++ 再頒布可能パッケージ (VSU1\vcredist_x64.exe)</a>
 </li>
 </ul>
 </li>
 <li>
-<p>install-x86/amd64.batを実行してください</p>
+<p>install-Win32/x64.batを実行してください</p>
 
 <ul>
 <li>
 <strong><em>重要！</em></strong>
-インストール後にscff-dsf-x86/amd64.axを移動させた場合は再度install-x86/amd64.batを実行してください。</li>
+インストール後にscff-dsf-Win32/x64.axを移動させた場合は再度install-Win32/x64.batを実行してください。</li>
 </ul>
 </li>
 </ol><h2>使用方法</h2>
@@ -111,12 +127,13 @@ SCFF DirectShow Filterは取り込みサイズとフレームレートは
 
 <ol>
 <li><p>エンコーダおよびGUIクライアント(scff-app.exe)が実行されていないことを確認して下さい。</p></li>
-<li><p>uninstall-x86.bat/uninstall-amd64.batを実行してください。</p></li>
+<li><p>uninstall-Win32.bat/uninstall-x64.batを実行してください。</p></li>
+<li><p>フォルダ・ファイルを削除してください。</p></li>
 <li>
-<p>フォルダ・ファイルを削除してください。</p>
+<p>アプリケーション設定ファイルが以下の場所にあるので削除してください。</p>
 
 <ul>
-<li>レジストリは使用していませんので、これだけで完全にアンインストールが可能です。</li>
+<li>Users/NAME/AppData/scff_app</li>
 </ul>
 </li>
 </ol><h2>注意</h2>
@@ -140,6 +157,7 @@ SCFF DirectShow Filterは取り込みサイズとフレームレートは
 </ul><h2>開発者向け: ビルド+利用方法</h2>
 
 <ol>
+<li><p>Pythonに詳しい方はtools/build.pyを参照してください。下記の作業の一部を自動化できます。</p></li>
 <li>
 <p><a href="http://ffmpeg.zeranoe.com/builds/">Zeranoe FFmpeg builds</a> からSharedビルド及びDevビルドを取得する</p>
 
@@ -148,49 +166,30 @@ SCFF DirectShow Filterは取り込みサイズとフレームレートは
 <li><a href="http://ffmpeg.zeranoe.com/builds/win32/dev/ffmpeg-latest-win32-dev.7z">32bit Builds (Dev)</a></li>
 <li><a href="http://ffmpeg.zeranoe.com/builds/win64/shared/ffmpeg-latest-win64-shared.7z">64bit Builds (Shared)</a></li>
 <li><a href="http://ffmpeg.zeranoe.com/builds/win64/dev/ffmpeg-latest-win64-dev.7z">64bit Builds (Dev)</a></li>
-<li>ext/ffmpeg/amd64に64bit版を、ext/ffmpeg/x86に32bit版を展開する</li>
+<li>ext/ffmpeg/x64に64bit版を、ext/ffmpeg/Win32に32bit版を展開する</li>
 <li>SharedもDevも同じディレクトリに展開すること（数個のファイルが上書きされるが問題ない）</li>
-<li>ext/ffmpeg/amd64/README.txt, ext/ffmpeg/x86/README.txtが存在するように確認すること</li>
-</ul>
-</li>
-<li>
-<p><strong><em>重要！</em></strong> ext/ffmpeg/amd64/include/libavutil/pixdesc.hおよび</p>
-
-<ul>
-<li>
-<p>ext/ffmpeg/x86/include/libavutil/pixdesc.hの以下の部分:</p>
-
-<pre><code>extern const AVPixFmtDescriptor av_pix_fmt_descriptors[];
-</code></pre>
-
-<p>を</p>
-
-<pre><code>extern __declspec(dllimport) const AVPixFmtDescriptor av_pix_fmt_descriptors[];
-</code></pre>
-
-<p>のように書き換えてください。一応tools/pixdesc.patchも添付してあります。</p>
-</li>
+<li>ext/ffmpeg/x64/README.txt, ext/ffmpeg/Win32/README.txtが存在するように確認すること</li>
 </ul>
 </li>
 <li>
 <p>scff-dsf.slnソリューションを開き、全てのビルドが通ることを確認</p>
 
 <ul>
-<li>Microsoft Visual C++ 2010 Express Edition + Windows SDK 7.1で確認済み</li>
+<li>Microsoft Visual Studio Express 2012で確認済み</li>
 <li>必要ならばいくつかのプロジェクト設定を書き換えること</li>
 </ul>
 </li>
-<li><p>tools/copy-binaries.batを実行してdistディレクトリにdllなどをコピー</p></li>
+<li><p>tools/copy-ffmpeg-dll.batを実行してbinディレクトリにffmpeg付属のdllをコピー</p></li>
 <li><p>tools/install-debug.batかtools/install-release.batを実行</p></li>
 <li><p>各種エンコーダを起動しフィルタが認識されているかチェック</p></li>
 <li>
 <p>scff-app.slnソリューションを開き、全てのビルドが通ることを確認</p>
 
 <ul>
-<li>Microsoft Visual C# 2010 Express Editionで確認済み</li>
+<li>Microsoft Visual Studio Express 2012で確認済み</li>
 </ul>
 </li>
-<li><p>dist/Debugかdist/Releaseにあるヘルパーアプリケーションを起動し取り込み設定を行う</p></li>
+<li><p>bin/Debugかbin/Releaseにあるヘルパーアプリケーションを起動し取り込み設定を行う</p></li>
 <li>
 <p>（scff-dsfのデバッグバージョンを利用する場合:）</p>
 
@@ -213,7 +212,8 @@ SCFF DirectShow Filterは取り込みサイズとフレームレートは
 <p>パッチを作成したい場合やコードを追加したい場合、まずGoogle C++スタイルガイドを一読してください。</p>
 
 <ul>
-<li><a href="http://www.textdrop.net/google-styleguide-ja/cppguide.xml">Google C++スタイルガイド 日本語訳</a></li>
+<li><a href="http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml">Google C++ Style Guide (Revision 3.231)</a></li>
+<li><a href="http://www.textdrop.net/google-styleguide-ja/cppguide.xml">Google C++スタイルガイド 日本語訳 (Revision 3.199)</a></li>
 <li>このガイドは単純に決め事ではなく、バグを減らすために役に立つテクニックもいくらか含まれているようです。</li>
 </ul>
 </li>
@@ -230,7 +230,7 @@ SCFF DirectShow Filterは取り込みサイズとフレームレートは
 <h3>ffmpeg</h3>
 
 <ul>
-<li>サンプル設定がtools/ffmpeg_test.batにあります。</li>
+<li>サンプル設定がtools/test-ffmpeg.batにあります。</li>
 </ul><h3>xSplit</h3>
 
 <ul>
@@ -316,20 +316,15 @@ SCFF DirectShow Filterは取り込みサイズとフレームレートは
 <li>利用しているLGPLライブラリ:
 
 <ul>
+<li>libswscale:
+a library performing highly optimized image scaling and
+color space/pixel format conversion operations.</li>
 <li>libavutil:
 a library containing functions for simplifying programming, 
 including random number generators, data structures, mathematics routines,
 core multimedia utilities, and much more.</li>
 <li>libavcodec:
 a library containing decoders and encoders for audio/video codecs.</li>
-<li>libswscale:
-a library performing highly optimized image scaling and
-color space/pixel format conversion operations.</li>
-<li>libavfilter: a library containing media filters.</li>
-<li>libavformat: a library containing demuxers and muxers
-for multimedia container formats.</li>
-<li>libswresample: a library performing highly optimized audio resampling, 
-rematrixing and sample format conversion operations.</li>
 </ul>
 </li>
 <li>利用しているLGPLライセンスのソースコード
@@ -337,7 +332,10 @@ rematrixing and sample format conversion operations.</li>
 <ul>
 <li>libavutil/colorspace.h</li>
 <li>libavfilter/drawutils.c</li>
+<li>libavfilter/formats.c</li>
 <li>libavfilter/drawutils.h</li>
+<li>libavfilter/formats.h</li>
+<li>libavfilter/all_channel_layouts.inc</li>
 </ul>
 </li>
 </ul>
@@ -362,7 +360,7 @@ rematrixing and sample format conversion operations.</li>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 		
   </body>
 </html>
