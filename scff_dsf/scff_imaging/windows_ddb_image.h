@@ -49,6 +49,8 @@ class WindowsDDBImage: public Image {
   /// 与えられたWindowからCompatibleBitmapを作成する
   /// @sa Image::Create
   ErrorCodes CreateFromWindow(int width, int height, HWND window);
+  /// HBITMAPから作成
+  ErrorCodes CreateFromHBITMAP(int width, int height, HBITMAP bitmap);
   //-------------------------------------------------------------------
 
   /// Getter: Windowsビットマップハンドル

@@ -20,6 +20,9 @@
 
 #include "scff_imaging/splash_screen.h"
 
+#include <tchar.h>
+#include <gdiplus.h>
+
 #include "resource.h"   // NOLINT
 #include "scff_imaging/debug.h"
 #include "scff_imaging/utilities.h"
@@ -64,9 +67,39 @@ ErrorCodes SplashScreen::Init() {
   DbgLog((kLogTrace, kTraceInfo,
           TEXT("SplashScreen: Init")));
 
+  TCHAR splashPath[MAX_PATH];
+  TCHAR dllPath[MAX_PATH];
+  GetModuleFileName(utilities::dll_instance(), dllPath, _countof(dllPath));
+  size_t i = _tcslen(dllPath);
+  while (dllPath[i] != TEXT('\\'))
+  {
+	  dllPath[i] = '\0';
+	  --i;
+  }
+  _stprintf_s(splashPath, _countof(splashPath), TEXT("%ssplash.png"), dllPath);
+
+  Gdiplus::GdiplusStartupInput gdiplusStartupInput;
+  ULONG_PTR token;
+  Gdiplus::GdiplusStartup(&token, &gdiplusStartupInput, NULL);
+  Gdiplus::Bitmap* image = (Gdiplus::Bitmap*)new Gdiplus::Image(splashPath);
+  HBITMAP hbmp = NULL;
+  Gdiplus::Color cl;
+  image->GetPixel( 0, 0, &cl );
+  image->GetHBITMAP( cl, &hbmp );
+  /*
+  if (image->GetHBITMAP( cl, &hbmp ) != Gdiplus::Status::Ok)
+  {
+	  return ErrorCodes::kWindowsDDBImageCannotLoadResourceImageError;
+  }*/
+  HINSTANCE a = GetModuleHandle(NULL);
+  const int resource_width = !hbmp ? 128 : image->GetWidth();
+  const int resource_height = !hbmp ? 64 : image->GetHeight();
+  delete image;
+  Gdiplus::GdiplusShutdown(token);
+
   // あらかじめイメージのサイズを計算しておく
-  const int resource_width = 128;
-  const int resource_height = 64;
+  //const int resource_width = 128;
+ // const int resource_height = 64;
   int converted_width = GetOutputImage()->width();
   int converted_height = GetOutputImage()->height();
   int padding_top = 0;
@@ -97,10 +130,14 @@ ErrorCodes SplashScreen::Init() {
   //-------------------------------------------------------------------
   // リソースのビットマップ読み込み用
   const WORD resource_id = IDB_SPLASH;
-  const ErrorCodes error_resource_ddb =
-      resource_ddb_.CreateFromResource(resource_width,
-                                       resource_height,
-                                       resource_id);
+  const ErrorCodes error_resource_ddb = !hbmp ?
+	  resource_ddb_.CreateFromResource(resource_width,
+	                                   resource_height,
+	                                   resource_id) :
+      resource_ddb_.CreateFromHBITMAP(resource_width,
+	                                  resource_height,
+	                                   hbmp);
+
   if (error_resource_ddb != ErrorCodes::kNoError) {
     return ErrorOccured(error_resource_ddb);
   }

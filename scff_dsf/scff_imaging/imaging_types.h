@@ -229,6 +229,8 @@ struct LayoutParameter {
   bool keep_aspect_ratio;
   /// 回転方向
   RotateDirections rotate_direction;
+  /// ウィンドウの有効性を無視
+  int8_t ignore_valid_window;
 };
 }   // namespace scff_imaging
 

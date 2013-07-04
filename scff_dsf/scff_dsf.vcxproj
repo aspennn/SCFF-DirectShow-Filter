@@ -184,7 +184,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)\obj\BaseClasses\$(Configuration)_$(PlatformName)\;$(SolutionDir)ext\ffmpeg\$(PlatformName)\lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>base\$(ProjectName)_$(PlatformName).def</ModuleDefinitionFile>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
-      <AdditionalDependencies>strmbasd.lib;Msvcrtd.lib;Winmm.lib;PSAPI.lib;swscale.lib;avcodec.lib;avutil.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>strmbasd.lib;Msvcrtd.lib;Winmm.lib;PSAPI.lib;swscale.lib;avcodec.lib;avutil.lib;gdiplus.lib</AdditionalDependencies>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <PreLinkEvent />
@@ -208,7 +208,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)\obj\BaseClasses\$(Configuration)_$(PlatformName)\;$(SolutionDir)ext\ffmpeg\$(PlatformName)\lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>base\$(ProjectName)_$(PlatformName).def</ModuleDefinitionFile>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
-      <AdditionalDependencies>strmbasd.lib;Msvcrtd.lib;Winmm.lib;PSAPI.lib;swscale.lib;avcodec.lib;avutil.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>strmbasd.lib;Msvcrtd.lib;Winmm.lib;PSAPI.lib;swscale.lib;avcodec.lib;avutil.lib;gdiplus.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent />
     <PreLinkEvent />
@@ -234,7 +234,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)\obj\BaseClasses\$(Configuration)_$(PlatformName)\;$(SolutionDir)ext\ffmpeg\$(PlatformName)\lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>base\$(ProjectName)_$(PlatformName).def</ModuleDefinitionFile>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
-      <AdditionalDependencies>strmbase.lib;Msvcrt.lib;Winmm.lib;PSAPI.lib;swscale.lib;avcodec.lib;avutil.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>strmbase.lib;Msvcrt.lib;Winmm.lib;PSAPI.lib;swscale.lib;avcodec.lib;avutil.lib;gdiplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
     </Link>
     <PreLinkEvent />
@@ -262,7 +262,7 @@
       <AdditionalLibraryDirectories>$(SolutionDir)\obj\BaseClasses\$(Configuration)_$(PlatformName)\;$(SolutionDir)ext\ffmpeg\$(PlatformName)\lib</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>base\$(ProjectName)_$(PlatformName).def</ModuleDefinitionFile>
       <IgnoreAllDefaultLibraries>true</IgnoreAllDefaultLibraries>
-      <AdditionalDependencies>strmbase.lib;Msvcrt.lib;Winmm.lib;PSAPI.lib;swscale.lib;avcodec.lib;avutil.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>strmbase.lib;Msvcrt.lib;Winmm.lib;PSAPI.lib;swscale.lib;avcodec.lib;avutil.lib;gdiplus.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent />
     <PreLinkEvent />

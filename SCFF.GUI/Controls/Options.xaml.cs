@@ -111,6 +111,45 @@ public partial class Options : UserControl, IBindingProfile {
     //-----------------------------------------------------------------
   }
 
+  /// AutoDesktop: Click
+  /// @param sender 使用しない
+  /// @param e 使用しない
+  private void AutoDesktop_Click(object sender, RoutedEventArgs e)
+  {
+	  if (!this.AutoDesktop.IsChecked.HasValue) return;
+
+	  App.Profile.Current.Open();
+	  App.Profile.Current.AutoDesktop = (bool)this.AutoDesktop.IsChecked;
+	  App.Profile.Current.Close();
+
+	  //-----------------------------------------------------------------
+	  // Notify self
+	  // Notify other controls
+	  Commands.CurrentLayoutElementVisualChanged.Execute(null, this);
+	  //-----------------------------------------------------------------
+  }
+  /// IgnoreValidWindow: Click
+  /// @param sender 使用しない
+  /// @param e 使用しない
+  private void IgnoreValidWindow_Click(object sender, RoutedEventArgs e)
+  {
+	  if (!this.IgnoreValidWindow.IsChecked.HasValue) return;
+
+	  App.Profile.Current.Open();
+	  App.Profile.Current.IgnoreValidWindow = (bool)this.IgnoreValidWindow.IsChecked;
+	  foreach (Common.Profile.ILayoutElement current in App.Profile)
+	  {
+		  current.IgnoreValidWindow = (bool)this.IgnoreValidWindow.IsChecked;
+	  }
+	  App.Profile.Current.Close();
+
+	  //-----------------------------------------------------------------
+	  // Notify self
+	  // Notify other controls
+	  Commands.CurrentLayoutElementVisualChanged.Execute(null, this);
+	  //-----------------------------------------------------------------
+  }
+
   //-------------------------------------------------------------------
   // Checked/Unchecked
   //-------------------------------------------------------------------

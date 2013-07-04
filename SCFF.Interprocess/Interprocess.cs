@@ -192,6 +192,10 @@ public struct LayoutParameter {
   /// 回転方向
   /// @attention RotateDirectionを操作に使うこと
   public Int32 RotateDirection;
+  /// ウィンドウロスト時に自動でDesktopボタンを押す
+  public Byte AutoDesktop;
+  /// ウィンドウの有効性を無視
+  public Byte IgnoreValidWindow;
 }
 
 /// 共有メモリ(Message)に格納する構造体
@@ -230,19 +234,19 @@ public class Interprocess {
   //-------------------------------------------------------------------
 
   /// 共有メモリ名: SCFFエントリを格納するディレクトリ
-  private const string DirectoryName = "scff_v1_directory";
+  private const string DirectoryName = "scff_v11_directory";
 
   /// Directoryの保護用Mutex名
-  private const string DirectoryMutexName = "mutex_scff_v1_directory";
+  private const string DirectoryMutexName = "mutex_scff_v11_directory";
 
   /// 共有メモリ名の接頭辞: SCFFで使うメッセージを格納する
-  private const string MessageNamePrefix = "scff_v1_message_";
+  private const string MessageNamePrefix = "scff_v11_message_";
 
   /// Messageの保護用Mutex名の接頭辞
-  private const string MessageMutexNamePrefix = "mutex_scff_v1_message_";
+  private const string MessageMutexNamePrefix = "mutex_scff_v11_message_";
 
   /// イベント名の接頭辞
-  private const string ErrorEventNamePrefix = "scff_v1_error_event_";
+  private const string ErrorEventNamePrefix = "scff_v11_error_event_";
 
   //===================================================================
   // コンストラクタ/デストラクタ

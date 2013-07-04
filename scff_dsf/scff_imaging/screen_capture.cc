@@ -64,6 +64,11 @@ ScreenCapture::~ScreenCapture() {
 }
 
 ErrorCodes ScreenCapture::ValidateParameter(int index) {
+  if (parameters_[index].ignore_valid_window) {
+    DbgLog((LOG_TRACE, kTrace,
+      TEXT("Validparameter: Ignore")));
+    return ErrorCodes::kNoError;
+  }
   // パラメータ
   HWND window = parameters_[index].window;
   const int clipping_x = parameters_[index].clipping_x;
@@ -216,7 +221,11 @@ ErrorCodes ScreenCapture::Run() {
     // なおVGAのキャッシュは取り込み画像に比べて小さすぎるので、
     // キャッシュミス関連で気をつけるべきことはない
     HDC window_dc = GetDC(parameters_[i].window);
-    BitBlt(dc_for_bitblt_[i],
+	// 黒で塗りつぶす
+	RECT rect;
+	SetRect(&rect, 0, 0, parameters_[i].clipping_width, parameters_[i].clipping_height);
+	FillRect(dc_for_bitblt_[i], &rect, (HBRUSH)GetStockObject(BLACK_BRUSH));
+	BitBlt(dc_for_bitblt_[i],
            0, 0,
            parameters_[i].clipping_width, parameters_[i].clipping_height,
            window_dc,

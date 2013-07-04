@@ -52,6 +52,11 @@ public partial class MainWindow
     App.Impl.OnSavedProfile += this.OnSavedProfile;
     App.Impl.OnSentProfile += this.OnSentProfile;
 
+	timer_ = new System.Windows.Threading.DispatcherTimer();
+	timer_.Tick += new System.EventHandler(AutoDesktopTimerCallback);
+	timer_.Interval = new System.TimeSpan(0, 0, 0, 1);
+	timer_.Start();
+
     App.ScreenCaptureTimer.Tick += LayoutEdit.OnScreenCaptured;
 
     this.NotifyOptionsChanged();
@@ -749,5 +754,29 @@ public partial class MainWindow
     this.FixSize();
     this.FixExpanders();
   }
+
+	  // AutoDesktopタイマーコールバック
+  // @param state 使わない
+  // @param e 使わない
+  private void AutoDesktopTimerCallback(object state, System.EventArgs e)
+  {
+	  bool result = false;
+	  foreach (var layout in App.Profile)
+	  {
+		  if (layout.AutoDesktop && !layout.IsWindowValid)
+		  {
+			  ((Common.Profile.ILayoutElement)layout).Open();
+			  ((Common.Profile.ILayoutElement)layout).SetWindowToDesktop();
+			  ((Common.Profile.ILayoutElement)layout).Close();
+			  result = true;
+		  }
+	  }
+	  if (result)
+	  {
+		  App.Impl.SendProfile(true, false);
+	  }
+  }
+
+  System.Windows.Threading.DispatcherTimer timer_ = null;
 }
 }   // namespace SCFF.GUI

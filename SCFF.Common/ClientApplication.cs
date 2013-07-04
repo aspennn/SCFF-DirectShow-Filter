@@ -86,6 +86,32 @@ public class ClientApplication {
   private void DSFMonitor_OnErrorOccured(object sender, DSFErrorOccuredEventArgs e) {
     if (!Utilities.IsProcessAlive(e.ProcessID)) return;
 
+	bool result = false;
+	foreach (var layout in Profile)
+	{
+		if (layout.AutoDesktop)
+		{
+			if (layout.IsWindowValid)
+			{
+				((ILayoutElement)layout).Open();
+				((ILayoutElement)layout).SetWindowToDesktop();
+				try
+				{
+					((ILayoutElement)layout).Close();
+				}
+				catch (Exception)
+				{
+				}
+				result = true;
+			}
+		}
+	}
+	if (result)
+	{
+		this.SendProfile(true, false);
+		return;
+	}
+
     // Event: DSFErrorOccured
     {
       var message = string.Format("SCFF DirectShow Filter({0}) has encountered a problem.",

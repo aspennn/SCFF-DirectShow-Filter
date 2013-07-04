@@ -3,10 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" d:DesignWidth="256" d:DesignHeight="89"
+             mc:Ignorable="d" d:DesignWidth="256" d:DesignHeight="110"
              FontSize="10">
   <Grid>
     <Grid.RowDefinitions>
+      <RowDefinition Height="20"/>
       <RowDefinition Height="20"/>
       <RowDefinition Height="20"/>
       <RowDefinition Height="20"/>
@@ -35,13 +36,17 @@
               VerticalAlignment="Center" Height="15"
               IsEnabled="False"
               x:Name="OverSampling" Content="Over-Sampling"/>
-    <Label    Grid.Column="1" Grid.Row="2"
+        <Label    Grid.Column="1" Grid.Row="3"
               VerticalAlignment="Center" HorizontalAlignment="Right" Height="12"
               IsEnabled="False"
-              Content="Thread Num"/>
-    <ComboBox Grid.Column="1" Grid.Row="3"
+              Content="Thread Num" Margin="0,5,10,4" Width="51"/>
+        <ComboBox Grid.Column="1" Grid.Row="4"
               VerticalAlignment="Center" Height="20"
               IsEnabled="False"
               x:Name="ThreadCount" />
-  </Grid>
+        <CheckBox Grid.Column="1"
+        	VerticalAlignment="Center" Height="16"
+        	x:Name="AutoDesktop" Content="AutoDesktop" Margin="0,3,0,1" Grid.Row="1" Click="AutoDesktop_Click"/>
+        <CheckBox x:Name="IgnoreValidWindow" Content="IgnoreValidWindow" Grid.Column="1" HorizontalAlignment="Left" Margin="0,4,0,0" Grid.Row="2" VerticalAlignment="Top" Click="IgnoreValidWindow_Click" FontSize="9"/>
+    </Grid>
 </UserControl>

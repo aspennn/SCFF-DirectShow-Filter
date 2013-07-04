@@ -61,19 +61,19 @@ static const int kMaxComplexLayoutElements = 8;
 //---------------------------------------------------------------------
 
 /// 共有メモリ名: SCFFエントリを格納するディレクトリ
-static const char kDirectoryName[] = "scff_v1_directory";
+static const char kDirectoryName[] = "scff_v11_directory";
 
 /// Directoryの保護用Mutex名
-static const char kDirectoryMutexName[] = "mutex_scff_v1_directory";
+static const char kDirectoryMutexName[] = "mutex_scff_v11_directory";
 
 /// 共有メモリ名の接頭辞: SCFFで使うメッセージを格納する
-static const char kMessageNamePrefix[] = "scff_v1_message_";
+static const char kMessageNamePrefix[] = "scff_v11_message_";
 
 /// Messageの保護用Mutex名の接頭辞
-static const char kMessageMutexNamePrefix[] = "mutex_scff_v1_message_";
+static const char kMessageMutexNamePrefix[] = "mutex_scff_v11_message_";
 
 /// イベント名の接頭辞
-static const TCHAR kErrorEventNamePrefix[] = TEXT("scff_v1_error_event_");
+static const TCHAR kErrorEventNamePrefix[] = TEXT("scff_v11_error_event_");
 
 //---------------------------------------------------------------------
 
@@ -215,6 +215,10 @@ struct LayoutParameter {
   /// 回転方向
   /// @attention RotateDirectionを操作に使うこと
   int32_t rotate_direction;
+  /// ウィンドウロスト時に自動でDesktopボタンを押す
+  int8_t auto_desktop;
+  /// ウィンドウの有効性を無視
+  int8_t ignore_valid_window;
 };
 
 /// 共有メモリ(Message)に格納する構造体

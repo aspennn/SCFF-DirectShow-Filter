@@ -11,7 +11,7 @@
         Icon="Images/app.ico"
         ResizeMode="CanResizeWithGrip"
         Width="772.437"
-        Height="565"
+        Height="590"
         MinWidth="280"
         MinHeight="280" 
         FontFamily="Segoe UI, Tahoma"

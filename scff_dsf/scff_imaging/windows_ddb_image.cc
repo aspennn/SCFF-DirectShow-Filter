@@ -114,6 +114,19 @@ ErrorCodes WindowsDDBImage::CreateFromWindow(int width, int height,
   return ErrorCodes::kNoError;
 }
 
+ErrorCodes WindowsDDBImage::CreateFromHBITMAP(int width, int height, HBITMAP bitmap)
+{
+	ErrorCodes error_create =
+		Image::Create(ImagePixelFormats::kRGB0, width, height);
+
+	if (bitmap == nullptr) {
+		return ErrorCodes::kWindowsDDBImageCannotLoadResourceImageError;
+	}
+
+	windows_ddb_ = bitmap;
+	return ErrorCodes::kNoError;
+}
+
 HBITMAP WindowsDDBImage::windows_ddb() const {
   return windows_ddb_;
 }

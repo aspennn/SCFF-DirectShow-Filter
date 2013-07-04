@@ -149,9 +149,19 @@ public class LayoutElement : ILayoutElementView, ILayoutElement {
   }
   /// @copydoc ILayoutElement::SetWindowToDesktop
   public void SetWindowToDesktop() {
-    this.Data.WindowType = WindowTypes.Desktop;
-    this.Data.Window = User32.GetDesktopWindow();
+    //this.Data.WindowType = WindowTypes.Desktop;
+    //this.Data.Window = User32.GetDesktopWindow();
     this.Data.WindowCaption = "(Desktop)";
+
+	// プライマリモニタだけ取り込まれるようにする
+	User32.RECT rect;
+	User32.GetClientRect(User32.GetDesktopWindow(), out rect);
+	this.Data.Window = User32.GetDesktopWindow();
+	this.Fit = false;
+	this.ClippingXWithoutFit = rect.Left;
+	this.ClippingYWithoutFit = rect.Top;
+	this.ClippingWidthWithoutFit = rect.Right;
+	this.ClippingHeightWithoutFit = rect.Bottom;
   }
   /// @copydoc ILayoutElement::SetWindowToDesktopListView
   public void SetWindowToDesktopListView() {
@@ -267,6 +277,18 @@ public class LayoutElement : ILayoutElementView, ILayoutElement {
     get { return this.Data.RotateDirection; }
     set { this.Data.RotateDirection = value; }
   }
+  /// @copydoc SCFF::Interprocess::LayoutParameter::AutoDesktop
+  public bool AutoDesktop
+  {
+	  get { return this.Data.AutoDesktop; }
+	  set { this.Data.AutoDesktop = value; }
+  }
+  /// @copydoc SCFF::Interprocess::LayoutParameter::IgnoreValidWindow
+  public bool IgnoreValidWindow
+  {
+	  get { return this.Data.IgnoreValidWindow; }
+	  set { this.Data.IgnoreValidWindow = value; }
+  }	
 
   //=================================================================
   // ResizeMethod

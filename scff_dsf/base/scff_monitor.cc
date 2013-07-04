@@ -179,6 +179,7 @@ void ConvertLayoutParameter(
   output->clipping_height = input.clipping_height;
   output->show_cursor = input.show_cursor != 0;
   output->show_layered_window = input.show_layered_window != 0;
+  output->ignore_valid_window = input.ignore_valid_window != 0;
 
   //-------------------------------------------------------------------
   // SWScaleConfigの変換

@@ -74,6 +74,8 @@ class InternalLayoutParameter {
     result.Stretch = (Byte)(this.Stretch ? 1 : 0);
     result.KeepAspectRatio = (Byte)(this.KeepAspectRatio ? 1 : 0);
     result.RotateDirection = (int)this.RotateDirection;
+    result.AutoDesktop = (Byte)(this.AutoDesktop ? 1 : 0);
+    result.IgnoreValidWindow = (Byte)(this.IgnoreValidWindow ? 1 : 0);
     return result;
   }
   /// @copydoc SCFF::Interprocess::LayoutParameter::BoundX
@@ -106,6 +108,10 @@ class InternalLayoutParameter {
   public bool KeepAspectRatio { get; set; }
   /// @copydoc SCFF::Interprocess::LayoutParameter::RotateDirection
   public RotateDirections RotateDirection { get; set; }
+  /// @copydoc SCFF::Interprocess::LayoutParameter::AutoDesktop
+  public bool AutoDesktop { get; set; }
+  /// @copydoc SCFF::Interprocess::LayoutParameter::IgnoreValidWindow
+  public bool IgnoreValidWindow { get; set; }
 }
 
 /// @copybrief SCFF::Interprocess::SWScaleConfig

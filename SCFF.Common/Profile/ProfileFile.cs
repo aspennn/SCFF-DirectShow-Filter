@@ -71,7 +71,9 @@ public class ProfileFile : TinyKeyValueFile {
           writer.WriteLine("Stretch{0}={1}", index, layoutElement.Stretch);
           writer.WriteLine("KeepAspectRatio{0}={1}", index, layoutElement.KeepAspectRatio);
           writer.WriteLine("RotateDirection{0}={1}", index, (int)layoutElement.RotateDirection);
-          // ResizeMethod
+		  writer.WriteLine("AutoDesktop{0}={1}", index, layoutElement.AutoDesktop);
+		  writer.WriteLine("IgnoreValidWindow{0}={1}", index, layoutElement.IgnoreValidWindow);
+		  // ResizeMethod
           writer.WriteLine("SWScaleFlags{0}={1}", index, (int)layoutElement.SWScaleFlags);
           writer.WriteLine("SWScaleAccurateRnd{0}={1}", index, layoutElement.SWScaleAccurateRnd);
           writer.WriteLine("SWScaleIsFilterEnabled{0}={1}", index, layoutElement.SWScaleIsFilterEnabled);
@@ -202,6 +204,14 @@ public class ProfileFile : TinyKeyValueFile {
       if (this.TryGetBool("KeepAspectRatio" + i, out boolValue)) {
         layoutElement.KeepAspectRatio = boolValue;
       }
+	  if (this.TryGetBool("AutoDesktop" + i, out boolValue))
+	  {
+		  layoutElement.AutoDesktop = boolValue;
+	  }
+	  if (this.TryGetBool("IgnoreValidWindow" + i, out boolValue))
+	  {
+		  layoutElement.IgnoreValidWindow = boolValue;
+	  }
       RotateDirections rotateDirections;
       if (this.TryGetRotateDirections("RotateDirection" + i, out rotateDirections)) {
         layoutElement.RotateDirection = rotateDirections;

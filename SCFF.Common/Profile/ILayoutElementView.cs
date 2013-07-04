@@ -87,6 +87,10 @@ public interface ILayoutElementView {
   bool KeepAspectRatio { get; }
   /// @copydoc SCFF::Interprocess::LayoutParameter::RotateDirection
   RotateDirections RotateDirection { get; }
+  /// @copydoc SCFF::Interprocess::LayoutParameter::AutoDesktop
+  bool AutoDesktop { get; }
+  /// @copydoc SCFF::Interprocess::LayoutParameter::IgnoreValidWindow
+  bool IgnoreValidWindow { get; }
 
   //=================================================================
   // ResizeMethod
